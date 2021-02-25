@@ -14,6 +14,7 @@ namespace UsweRegistrationUsingLambda
         string mobileNumberPattern = "^[9]{1}[1]{1}[ ][0-9]{10}$";
         string passwordPattern = "^[A-Z]{1}[a-zA-Z]{7,}([0-9]+)[@#$%^&*+-_]{1}$";
         string emailPattern = "^[0-9a-zA-Z]+([._+-]?[0-9a-zA-Z]+)*@[0-9A-Za-z]+.([c]{1}[o]{1}[m]{1})*([n]{1}[e]{1}[t]{1})*[,]*([.][a]{1}[u]{1})*([.][c]{1}[o]{1}[m]{1})*$";
+       
         public bool FirstName(string patternFirstName) => Regex.IsMatch(patternFirstName, firstNamePattern);//lambda Expression
         public bool LastName(string patternLastName) => Regex.IsMatch(patternLastName, lastNamePattern);
         public bool MobileNumber(string patternMobileNumber) => Regex.IsMatch(patternMobileNumber, mobileNumberPattern);
@@ -148,7 +149,7 @@ namespace UsweRegistrationUsingLambda
                     {
                         throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.EMPTY_EXCEPTION, "Email should not be empty");
                     }
-                    if (patternEmail.Any(char.IsLetterOrDigit) == null)
+                    if (patternEmail.Any(char.IsLetterOrDigit) == false)
                     {
                         throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.USER_ENTERED_SPECIAL_CHARACTER, "Email should contains special characters");
                     }
